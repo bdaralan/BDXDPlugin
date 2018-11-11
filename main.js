@@ -24,8 +24,8 @@ function reloadAlwaysOnTop(selection) {
 
     // remove alwaysTop children from parent and put into alwayTopChildren array
     parent.children.forEach(function (child) {
-        console.log(child.name);
-        if (child.name.includes("always-top")) {
+        const name = child.name;
+        if (name.includes("always-top") || name.includes("alw-top")) {
             alwayTopChildren.push(child);
             child.removeFromParent();
         }
@@ -38,7 +38,7 @@ function reloadAlwaysOnTop(selection) {
         });
     } else {
         const title = "Oop!!";
-        const message = "Cannot find always-top object";
+        const message = "Cannot find any always-top objects σ(^_^;).";
         showAlert(title, message);
     }
 }
@@ -48,9 +48,10 @@ function reloadAlwaysOnTop(selection) {
 
 function createRect(width, height, color, name) {
     const rect = new Rectangle();
-    rect.fill = new Color(color);
-    rect.stroke = null;
     rect.name = "background";
+    rect.fill = new Color(color);
+    rect.resize(width, height);
+    rect.stroke = null;
     return rect;
 }
 
