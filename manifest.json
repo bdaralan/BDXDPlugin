@@ -1,5 +1,5 @@
 {
-    "name": "BDXDPlugin",
+    "name": "BDXD Plugin",
     "id": "00000000",
     "version": "0.0.1",
     "description": "Convenient components and actions",
@@ -17,7 +17,7 @@
     "uiEntryPoints": [
         {
             "type": "menu",
-            "label": "BDXDPlugin",
+            "label": "BDXD Plugin",
             "menuItems": [
                 {
                     "type": "menu",
