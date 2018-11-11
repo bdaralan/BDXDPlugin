@@ -1,0 +1,35 @@
+{
+    "name": "BDXDPlugin",
+    "id": "00000000",
+    "version": "0.0.1",
+    "description": "Convenient components and actions",
+    "icons": [
+        {
+            "width": 96,
+            "height": 96,
+            "path": "images/icon.png"
+        }
+    ],
+    "host": {
+        "app": "XD",
+        "minVersion": "13.0.0"
+    },
+    "uiEntryPoints": [
+        {
+            "type": "menu",
+            "label": "BDXDPlugin",
+            "menuItems": [
+                {
+                    "type": "menu",
+                    "label": "Insert Background",
+                    "commandId": "insertBackground"
+                },
+                {
+                    "type": "menu",
+                    "label": "Reload Always Top",
+                    "commandId": "reloadAlwaysOnTop"
+                }
+            ]
+        }
+    ]
+}
