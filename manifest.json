@@ -26,8 +26,18 @@
                 },
                 {
                     "type": "menu",
-                    "label": "Reload Always Top",
-                    "commandId": "reloadAlwaysOnTop"
+                    "label": "Reload Always Front",
+                    "commandId": "reloadAlwaysFront"
+                },
+                {
+                    "type": "menu",
+                    "label": "Mark Always Front",
+                    "commandId": "markSelectedItemsAlwayFront"
+                },
+                {
+                    "type": "menu",
+                    "label": "Remove Always Front",
+                    "commandId": "removeSelectedItemAlwayFront"
                 }
             ]
         }
