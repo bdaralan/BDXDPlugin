@@ -1,8 +1,8 @@
 {
     "name": "BDXD Plugin",
-    "id": "00000000",
+    "id": "6e6d91d7",
     "version": "0.0.1",
-    "description": "Convenient components and actions",
+    "description": "Various quick and convenient actions",
     "icons": [
         {
             "width": 96,
