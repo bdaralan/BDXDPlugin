@@ -1,5 +1,6 @@
 const { Rectangle, Color, Artboard } = require("scenegraph");
 const { alert } = require("./alertlib/dialogs.js");
+const commands = require("commands");
 
 const isAlwaysFrontMarkerString = "-isfront";
 
@@ -10,7 +11,6 @@ const isAlwaysFrontMarkerString = "-isfront";
 function insertBackground(selection) {
     const parent = selection.insertionParent;
     if (parent.selected || selection.items.length > 0) {
-        // add background rect
         const bgRect = createRect(parent.width, parent.height, "pink", "background");
         parent.addChild(bgRect, 0);
         bgRect.placeInParentCoordinates(bgRect.localCenterPoint, parent.localCenterPoint);
@@ -25,29 +25,21 @@ function insertBackground(selection) {
 
 /// Move every alway front object to the front of the artboard.
 function reloadAlwaysFront(selection) {
-    const parent = selection.insertionParent;
-    var alwaysFrontChildren = [];
+    const selectedItems = selection.items;
+    const children = selection.insertionParent.children;
 
-    // remove alwaysTop children from parent and put into alwayTopChildren array
-    parent.children.forEach((child) => {
-        const name = child.name.toLowerCase();
-        if (name.includes(isAlwaysFrontMarkerString)) {
-            alwaysFrontChildren.push(child);
-            child.removeFromParent();
-        }
-    });
+    // filter all children with isAlwaysFrontMarkerString in their name
+    const alwaysFrontChildren = children.filter(child => child.name.toLowerCase().includes(isAlwaysFrontMarkerString));
 
-    if (alwaysFrontChildren.length == 0) {
+    if (alwaysFrontChildren.length > 0) {
+        selection.items = alwaysFrontChildren;
+        commands.bringToFront();
+        selection.items = selectedItems; // set user's selections back if any
+    } else {
         const title = "Oop!!";
         const message = "Cannot find any always front objects σ(^_^;).";
         showAlert(title, message);
-        return;
     }
-
-    // insert alwaysTop children back to the parent.
-    alwaysFrontChildren.forEach((child) => {
-        parent.addChild(child, parent.children.length);
-    });
 }
 
 /// Mark selected items to be always front.
@@ -108,9 +100,9 @@ async function showAlert(title, message) {
 
 module.exports = {
     commands: {
-        insertBackground: insertBackground,
-        reloadAlwaysFront: reloadAlwaysFront,
-        markSelectedItemsAlwayFront: markSelectedItemsAlwayFront,
-        removeSelectedItemAlwayFront: removeSelectedItemAlwayFront
+        insertBackground,
+        reloadAlwaysFront,
+        markSelectedItemsAlwayFront,
+        removeSelectedItemAlwayFront
     }
 };
