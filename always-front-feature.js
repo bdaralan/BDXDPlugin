@@ -30,8 +30,7 @@ async function reloadAlwaysFront(selection) {
 /// Set selected items always front state.
 function setSelectedItemsAlwayFront(selectedItems, isFront) {
     if (selectedItems == null || selectedItems.length == 0 || selectedItems[0] instanceof Artboard) {
-        const message = "Please, select one or more objects before proceed.";
-        alert.showOperationFailedAlert(message);
+        alert.showOperationFailedAlert("Must select one or more objects.");
         return;
     }
 
