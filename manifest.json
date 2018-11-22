@@ -1,6 +1,6 @@
 {
-    "name": "BDXD Plugin",
-    "id": "6e6d91d7",
+    "name": "BDPlugin",
+    "id": "a9d1f5e9",
     "version": "0.0.1",
     "description": "Various quick and convenient actions",
     "icons": [
@@ -17,7 +17,7 @@
     "uiEntryPoints": [
         {
             "type": "menu",
-            "label": "BDXD Plugin",
+            "label": "BDPlugin",
             "menuItems": [
                 {
                     "type": "menu",
